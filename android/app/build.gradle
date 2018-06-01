@@ -137,9 +137,14 @@ android {
 }
 
 dependencies {
-    compile(project(':react-native-firebase')) {
+    implementation(project(':react-native-firebase')) {
         transitive = false
     }
+
+    // Firebase dependencies
+    implementation "com.google.firebase:firebase-core:15.0.2"
+    implementation "com.google.firebase:firebase-messaging:15.0.2"
+
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
@@ -151,3 +156,5 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+
+apply plugin: 'com.google.gms.google-services'
